@@ -97,7 +97,7 @@
 
         .plate-grid {
             display: grid;
-            grid-template-columns: 30px repeat(24, 34px);
+            grid-template-columns: 30px repeat(${COLS}, 34px);
             gap: 4px;
             position: relative;
             user-select: none;
@@ -201,6 +201,13 @@
     <h1>384 qPCR Plate Manager</h1>
 
     <div class="controls" style="display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end;">
+        <div class="control-group">
+            <label>Plate Format</label>
+            <select id="plateFormat" onchange="updatePlateFormat()">
+                <option value="384" selected>384-well (default)</option>
+                <option value="96">96-well</option>
+            </select>
+        </div>
         <div class="control-group">
             <label>Experiment Type</label>
             <select id="experimentType" onchange="toggleExperimentType()">
@@ -314,10 +321,26 @@
     </footer>
 
     <script>
-        const ROWS = 16; // A-P
-        const COLS = 24; // 1-24
-        const rowLabels = "ABCDEFGHIJKLMNOP".split("");
-        
+        let ROWS = 16; // Default 384
+        let COLS = 24;
+        let rowLabels = "ABCDEFGHIJKLMNOP".split("");
+
+        function updatePlateFormat() {
+            const format = document.getElementById('plateFormat').value;
+            if (format === '96') {
+                ROWS = 8;
+                COLS = 12;
+                rowLabels = "ABCDEFGH".split("");
+            } else {
+                ROWS = 16;
+                COLS = 24;
+                rowLabels = "ABCDEFGHIJKLMNOP".split("");
+            }
+            initGrid();
+            updateVisuals();
+            updateSelectionInfo();
+        }
+
         let plateData = {}; // key: "A-1", value: {target, sample, group}
         let selectedWells = new Set();
         
@@ -330,6 +353,8 @@
         function initGrid() {
             const grid = document.getElementById('plateGrid');
             grid.innerHTML = '';
+            // Update grid columns for alignment
+            grid.style.gridTemplateColumns = `30px repeat(${COLS}, 34px)`;
             
             // Selection Box Element
             selectionBox = document.createElement('div');
