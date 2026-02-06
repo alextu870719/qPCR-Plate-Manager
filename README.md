@@ -2,6 +2,8 @@
 
 A modern, browser-based tool for visualizing, editing, and exporting 96-well and 384-well qPCR plate layouts.
 
+[**Open qPCR_Plate_Manager.html**](https://alextu870719.github.io/qPCR-Plate-Manager/qPCR_Plate_Manager.html)
+
 ## Features
 - Interactive plate grid for manual and batch sample assignment
 - Switch between 96-well (8x12) and 384-well (16x24) formats
