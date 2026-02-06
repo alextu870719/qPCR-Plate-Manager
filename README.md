@@ -1,9 +1,10 @@
 # qPCR Plate Manager
 
-A modern, browser-based tool for visualizing, editing, and exporting 384-well qPCR plate layouts.
+A modern, browser-based tool for visualizing, editing, and exporting 96-well and 384-well qPCR plate layouts.
 
 ## Features
 - Interactive plate grid for manual and batch sample assignment
+- Switch between 96-well (8x12) and 384-well (16x24) formats
 - Auto-fill samples with flexible start well and direction
 - Color-coded wells by sample name
 - Marquee (box) selection and subtractive selection (hold Ctrl/Cmd)
@@ -16,7 +17,8 @@ A modern, browser-based tool for visualizing, editing, and exporting 384-well qP
 ## Usage
 1. Open `qPCR_Plate_Manager.html` in your web browser (Chrome, Safari, Edge).
 2. Use the controls to fill, edit, and visualize your plate.
-3. Export your plate as a CSV for downstream analysis or instrument loading.
+3. Switch plate format at the top (default is 384-well).
+4. Export your plate as a CSV for downstream analysis or instrument loading.
 
 ## Repository
 https://github.com/alextu870719/qPCR-Plate-Manager
